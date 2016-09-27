@@ -39,15 +39,15 @@ public class MainApp {
 			    break;
 
 			case 2:
-				  showSubMenuRatioOptions(1);
+			    showSubMenuRatioOptions(1);
 			    break;
 
 			case 3:
-				  showSubMenuRecordTradeOptions();
+			    showSubMenuRecordTradeOptions();
 			    break;
 
 			case 4:
-				  showSubMenuCalculateWeightedOptions();
+		            showSubMenuCalculateWeightedOptions();
 			    break;
 
 			case 5:
