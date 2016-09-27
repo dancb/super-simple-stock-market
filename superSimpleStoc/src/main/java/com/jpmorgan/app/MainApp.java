@@ -1,7 +1,6 @@
 package com.jpmorgan.app;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Date;
 import java.util.Scanner;
@@ -16,10 +15,10 @@ public class MainApp {
 	
 	ITradeBusiness tradeBusiness 	= null;
 	BufferedReader br 		= null;
-  	int selectedOption;
+        int selectedOption;
 
 	 public static void main(String[] args) throws Exception {
-		try {
+	    	try {
 			new MainApp();
 		} catch (Exception e) {
 			throw new Exception("An error has been found. " + e.getMessage());
@@ -27,10 +26,11 @@ public class MainApp {
 	 }
 	 
 	 private void mainMenu() throws Exception {
-		showMainMenu();
-	    	br = new BufferedReader(new InputStreamReader(System.in));
+	    showMainMenu();
+	    br = new BufferedReader(new InputStreamReader(System.in));
 	
 	    try {
+	  
 		    selectedOption = Integer.parseInt(br.readLine());
 
 		    switch (selectedOption) {
@@ -47,23 +47,22 @@ public class MainApp {
 			    break;
 
 			case 4:
-		            showSubMenuCalculateWeightedOptions();
+			    showSubMenuCalculateWeightedOptions();
 			    break;
 
 			case 5:
 			    quitProgram();
 			    break;
 		    }
-	
-	    } catch (IOException ioe) {
-	        System.out.println("IO error trying to read your input." + ioe);
-	        System.exit(1);
-	
-	    }
+
+	    } catch (Exception e) {
+	    	System.out.println("Error trying to read your input. " + e.getMessage());
+	    	this.goBackMainMenuAfterAnError();
+	    } 
 	 }
    
-	 public MainApp() throws Exception {
-		 this.mainMenu();
+   public MainApp() throws Exception {
+	this.mainMenu();
    }
  
 
@@ -87,9 +86,9 @@ public class MainApp {
    
     public void showSubMenuDividendOptions(int mainMenuChoice) throws Exception {
     	
-    	Double price 				= null;
+    	Double price 	    = null;
     	StockSymbols symbol = null;
-    	Scanner back 				= null;
+    	Scanner back 	    = null;
 
         switch (mainMenuChoice) {
 
@@ -112,7 +111,7 @@ public class MainApp {
 
         try {
         	
-            selectedOption 						= Integer.parseInt(br.readLine());
+            selectedOption              = Integer.parseInt(br.readLine());
             IMarketBusiness business 	= new MarketBusinessImpl();
             
             switch (selectedOption) {
@@ -189,17 +188,16 @@ public class MainApp {
 
             }
             
-            	back = new Scanner(System.in);
+           	back = new Scanner(System.in);
 		System.out.print("\n\nBack to main menu? Y/N: "); 
 		String yn = back.next();
 		if(yn.equalsIgnoreCase("Y"))
 		this.mainMenu();
 
-        } catch (IOException ioe) {
-            System.out.println("IO error trying to read your submenu input." + ioe);
-            System.exit(1);
-
-        }
+	} catch (Exception e) {
+		System.out.println("An error has been found. " + e.getMessage());
+		this.goBackMainMenuAfterAnError();
+	} 
 
     }
     
@@ -241,10 +239,10 @@ public class MainApp {
 	            	System.out.println("");
 	                System.out.println("Write its Price to complete the operation");
 			System.out.print("Price: ");
-								
+
 			price 	= scPrice.nextDouble();
 			symbol 	= getValueStockSymbolByInput("1");
-				
+
 			marketBusiness.getPERatio(price, symbol);
 								
 	              break;
@@ -255,10 +253,10 @@ public class MainApp {
 	            	System.out.println("");
 	                System.out.println("Write its Price to complete the operation");
 			System.out.print("Price: ");
-								
+
 			price 	= scPrice1.nextDouble();
 			symbol 	= getValueStockSymbolByInput("2");
-				
+
 			marketBusiness.getPERatio(price, symbol);
 								
 	              break;
@@ -269,10 +267,10 @@ public class MainApp {
 	            	System.out.println("");
 	                System.out.println("Write its Price to complete the operation");
 			System.out.print("Price: ");
-								
+
 			price 	= scPrice2.nextDouble();
 			symbol 	= getValueStockSymbolByInput("3");
-				
+
 			marketBusiness.getPERatio(price, symbol);
 								
 	              break;
@@ -283,10 +281,10 @@ public class MainApp {
 	            	System.out.println("");
 	                System.out.println("Write its Price to complete the operation");
 			System.out.print("Price: ");
-								
+
 			price 	= scPrice3.nextDouble();
 			symbol 	= getValueStockSymbolByInput("4");
-				
+
 			marketBusiness.getPERatio(price, symbol);
 								
 	              break;
@@ -298,9 +296,10 @@ public class MainApp {
 	            	System.out.println("");
 	                System.out.println("Write its Price to complete the operation");
 			System.out.print("Price: ");
+
 			price 	= scPrice4.nextDouble();
 			symbol 	= getValueStockSymbolByInput("5");
-				
+
 			marketBusiness.getPERatio(price, symbol);
 								
 	              break;
@@ -311,19 +310,26 @@ public class MainApp {
 
             }
             
-            	back = new Scanner(System.in);
+		back = new Scanner(System.in);
 		System.out.print("\n\nBack to main menu? Y/N: "); 
 		String yn = back.next();
-		
 		if(yn.equalsIgnoreCase("Y"))
 			this.mainMenu();
 
-        } catch (IOException ioe) {
-            System.out.println("IO error trying to read your submenu input." + ioe);
-            System.exit(1);
+        } catch (Exception e) {
+		System.out.println("An error has been found. " + e.getMessage());
+		this.goBackMainMenuAfterAnError();
+	} 
 
-        }
-
+    }
+    
+    private void goBackMainMenuAfterAnError() throws Exception{
+    	Scanner scan = new Scanner(System.in);
+	System.out.print("Press any key to go back to main menu");
+	boolean hasNexLine = scan.hasNextLine();
+	if(hasNexLine){
+		mainMenu();
+	}
     }
     
     
@@ -331,50 +337,52 @@ public class MainApp {
     	Scanner three1 = null;
     	Scanner three2 = null;
     	Scanner three3 = null;
-    	Scanner back   = null;
+    	
         try {
         	
         	if(tradeBusiness==null)
         		tradeBusiness = new TradeBusinessImpl();
         	
         	three1 = new Scanner(System.in);
-    			System.out.print("Please write a Quantity "); 
-    			Double quantity = three1.nextDouble();
-    			
-    			three2 = new Scanner(System.in);
-    			System.out.print("Please write a Buy (B) or Sell (S): ");
-    			String bs = three2.next().toUpperCase();
-    			
-    			three3 = new Scanner(System.in);
-    			System.out.print("Please write a Price: "); 
-    			Double price4 = three3.nextDouble();
-    			
-    			TradingModel model = new TradingModel();
-    			model.setIndicator(bs);
-    			model.setPrice(price4);
-    			model.setQuantity(quantity);
-    			model.setTimeTrading(new Date());
-    			
-    			tradeBusiness.savingTrade(model);
-    			
-    			back = new Scanner(System.in);
-    			System.out.print("Back to main menu? Y/N: "); 
-    			String yn = back.next();
-    			if(yn.equalsIgnoreCase("Y"))
-    				this.mainMenu();
-            
+		System.out.print("Please write a Quantity "); 
+		Double quantity = three1.nextDouble();
 
-        } catch (Exception ioe) {
-            System.out.println("Error trying to execute the process." + ioe);
-            System.exit(1);
+		three2 = new Scanner(System.in);
+		System.out.print("Please write a Buy (B) or Sell (S): ");
+		String bs = three2.next().toUpperCase();
 
-        }
+		three3 = new Scanner(System.in);
+		System.out.print("Please write a Price: "); 
+		Double price4 = three3.nextDouble();
 
+		TradingModel model = new TradingModel();
+		model.setIndicator(bs);
+		model.setPrice(price4);
+		model.setQuantity(quantity);
+		model.setTimeTrading(new Date());
+
+		tradeBusiness.savingTrade(model);
+
+		this.backToMainMenuQuestion();
+
+	} catch (Exception e) {
+		System.out.println("Error trying to execute the process. " + e.getMessage());
+		this.goBackMainMenuAfterAnError();
+	}
+
+    }
+    
+    private void backToMainMenuQuestion() throws Exception{
+    	Scanner back = new Scanner(System.in);
+			System.out.print("Back to main menu? Y/N: "); 
+			String yn = back.next();
+			if(yn.equalsIgnoreCase("Y"))
+				this.mainMenu();
     }
     
     
     public void showSubMenuCalculateWeightedOptions() throws Exception {
-    		Scanner back = null;
+    		
         try {
         	
         	if(tradeBusiness==null || ((TradeBusinessImpl)tradeBusiness).getAllMemoryMap().size()<1){
@@ -385,18 +393,13 @@ public class MainApp {
 
         	tradeBusiness.getCalculationVWSPPast5Minutes();
     			
-		back = new Scanner(System.in);
-		System.out.print("Back to main menu? Y/N: "); 
-		String yn = back.next();
-		if(yn.equalsIgnoreCase("Y"))
-			this.mainMenu();
+        	this.backToMainMenuQuestion();
             
 
-        } catch (Exception ioe) {
-            System.out.println("Error trying to execute the process." + ioe);
-            System.exit(1);
-
-        }
+	  } catch (Exception e) {
+		 System.out.println("Error trying to execute the process." + e);
+		 this.goBackMainMenuAfterAnError();
+	  } 
 
     }
     
