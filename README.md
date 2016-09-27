@@ -7,5 +7,5 @@ Once you have done it, will appear a main menu on console. It is quite
 intuitive and by it you will able to go through different functionalities
 according to the requirements. Just follow what the menu says.
 
-This project also has its own unit test, which are located at the path:
+This project also has its own unit tests, which are located at the path:
 /superSimpleStoc/src/test/java/com/jpmorgan/test/GeneralMarketTest.java
