@@ -27,15 +27,15 @@ public class TradeBusinessImpl implements ITradeBusiness {
 
 	public Double getCalculationVWSPPast5Minutes() {
 
-		Date nowLessFive 						= AppUtil.getNowLessMinutes(5);
+		Date nowLessFive 	    = AppUtil.getNowLessMinutes(5);
 		Map<Date, TradingModel> map = this.getAllMemoryMap();
-		double quantityAcum 				= 0.0;
-		double operAcum 						= 0.0;
-		double result 							= 0.0;
+		double quantityAcum 	    = 0.0;
+		double operAcum 	    = 0.0;
+		double result 		    = 0.0;
 		
 		for (Map.Entry<Date, TradingModel> entry : map.entrySet()) {
 			
-			Date keyDate 								= ((Date) entry.getKey());
+			Date keyDate    		= ((Date) entry.getKey());
 			TradingModel tradingObject 	= ((TradingModel) entry.getValue());
 			
 			if(nowLessFive.before(keyDate) || nowLessFive.equals(keyDate)){
