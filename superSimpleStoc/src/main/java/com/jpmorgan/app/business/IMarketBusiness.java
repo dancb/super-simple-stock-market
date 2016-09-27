@@ -10,7 +10,7 @@ public interface IMarketBusiness {
 	 * Returns a <code>Double</code> to be able to work with decimal numbers. 
 	 * @param price Introduced by user.
 	 * @param symbol stored in memory.
-	 * @param showResult Assesses if the methoh has to show the result in console.
+	 * @param showResult Assesses if the method has to show the result in console.
 	 * @return
 	 * @throws Exception
 	 * @author Daniel Carrasco
