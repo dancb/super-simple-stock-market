@@ -10,13 +10,13 @@ public class MarketBusinessImpl implements IMarketBusiness {
 
 	public Double getDividendYield(Double price, StockSymbols symbol, boolean showValue) throws IllegalArgumentException {
 
-		Double result = 0D;
+		Double result       = 0D;
 		
-		MarketModel object 		= MarketModel.getRowByStockSymbol(symbol);
+		MarketModel object  = MarketModel.getRowByStockSymbol(symbol);
 		
-		Double dividend 			= object.getLastDividend();
-		Double fixedDividend 	= object.getFixDividend();
-		Double parValue 			= object.getParValue();
+		Double dividend     = object.getLastDividend();
+		Double fixedDividend= object.getFixDividend();
+		Double parValue     = object.getParValue();
 		
 		if(symbol==null || price==null)
 			throw new IllegalArgumentException("Values are required");
@@ -35,7 +35,7 @@ public class MarketBusinessImpl implements IMarketBusiness {
 	}
 
 	public Double getPERatio(Double price, StockSymbols symbol) throws Exception {
-		Double result 				= 0.0D;
+		Double result 		= 0.0D;
 		Double dividendYield 	= getDividendYield(price, symbol, false);	
 
 		if(dividendYield==null || price==null)
