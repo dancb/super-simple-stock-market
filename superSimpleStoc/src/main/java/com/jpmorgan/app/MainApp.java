@@ -188,11 +188,7 @@ public class MainApp {
 
             }
             
-           	back = new Scanner(System.in);
-		System.out.print("\n\nBack to main menu? Y/N: "); 
-		String yn = back.next();
-		if(yn.equalsIgnoreCase("Y"))
-		this.mainMenu();
+         this.backToMainMenuQuestion();
 
 	} catch (Exception e) {
 		System.out.println("An error has been found. " + e.getMessage());
@@ -310,11 +306,7 @@ public class MainApp {
 
             }
             
-		back = new Scanner(System.in);
-		System.out.print("\n\nBack to main menu? Y/N: "); 
-		String yn = back.next();
-		if(yn.equalsIgnoreCase("Y"))
-			this.mainMenu();
+            this.backToMainMenuQuestion();
 
         } catch (Exception e) {
 		System.out.println("An error has been found. " + e.getMessage());
@@ -325,11 +317,11 @@ public class MainApp {
     
     private void goBackMainMenuAfterAnError() throws Exception{
     	Scanner scan = new Scanner(System.in);
-	System.out.print("Press any key to go back to main menu");
-	boolean hasNexLine = scan.hasNextLine();
-	if(hasNexLine){
-		mainMenu();
-	}
+			System.out.print("\n\nPress the key Enter to go back to main menu");
+			boolean hasNexLine = scan.hasNextLine();
+			if(hasNexLine){
+				mainMenu();
+			}
     }
     
     
@@ -373,11 +365,7 @@ public class MainApp {
     }
     
     private void backToMainMenuQuestion() throws Exception{
-    	Scanner back = new Scanner(System.in);
-			System.out.print("Back to main menu? Y/N: "); 
-			String yn = back.next();
-			if(yn.equalsIgnoreCase("Y"))
-				this.mainMenu();
+    	this.goBackMainMenuAfterAnError();
     }
     
     
