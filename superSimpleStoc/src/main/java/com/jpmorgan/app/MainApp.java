@@ -15,46 +15,45 @@ import com.jpmorgan.app.model.TradingModel;
 public class MainApp {
 	
 	ITradeBusiness tradeBusiness 	= null;
-	BufferedReader br 						= null;
-  int selectedOption;
+	BufferedReader br 		= null;
+  	int selectedOption;
 
 	 public static void main(String[] args) throws Exception {
-		    try {
-					new MainApp();
-				} catch (Exception e) {
-					throw new Exception("An error has been found. " + e.getMessage());
-				}
+		try {
+			new MainApp();
+		} catch (Exception e) {
+			throw new Exception("An error has been found. " + e.getMessage());
+		}
 	 }
 	 
 	 private void mainMenu() throws Exception {
-			showMainMenu();
-	    br = new BufferedReader(new InputStreamReader(System.in));
+		showMainMenu();
+	    	br = new BufferedReader(new InputStreamReader(System.in));
 	
 	    try {
-	  
-			    selectedOption = Integer.parseInt(br.readLine());
-			
-			    switch (selectedOption) {
-			        case 1:
-			            showSubMenuDividendOptions(1);
-			            break;
-			
-			        case 2:
-			        	  showSubMenuRatioOptions(1);
-			            break;
-			            
-			        case 3:
-			        	  showSubMenuRecordTradeOptions();
-			            break;
-		
-			        case 4:
-			        	  showSubMenuCalculateWeightedOptions();
-			            break;
-			            
-			        case 5:
-			            quitProgram();
-			            break;
-			    }
+		    selectedOption = Integer.parseInt(br.readLine());
+
+		    switch (selectedOption) {
+			case 1:
+			    showSubMenuDividendOptions(1);
+			    break;
+
+			case 2:
+				  showSubMenuRatioOptions(1);
+			    break;
+
+			case 3:
+				  showSubMenuRecordTradeOptions();
+			    break;
+
+			case 4:
+				  showSubMenuCalculateWeightedOptions();
+			    break;
+
+			case 5:
+			    quitProgram();
+			    break;
+		    }
 	
 	    } catch (IOException ioe) {
 	        System.out.println("IO error trying to read your input." + ioe);
@@ -121,52 +120,52 @@ public class MainApp {
 	            case 1:
 	            	Scanner scPrice = new Scanner(System.in);
 	            	System.out.println("");
-	              System.out.println("Write its Price to complete the op1eration");
-								System.out.print("Price: ");
-								
-								price 	= scPrice.nextDouble();
-								symbol 	= getValueStockSymbolByInput("1");
-				
-								business.getDividendYield(price, symbol, true);
+	                System.out.println("Write its Price to complete the op1eration");
+			System.out.print("Price: ");
+
+			price 	= scPrice.nextDouble();
+			symbol 	= getValueStockSymbolByInput("1");
+
+			business.getDividendYield(price, symbol, true);
 								
 	              break;
 	                
 	            case 2:
 	            	Scanner scPrice1 = new Scanner(System.in);
 	            	System.out.println("");
-	              System.out.println("Write its Price to complete the operation");
-								System.out.print("Price: ");
-								
-								price 	= scPrice1.nextDouble();
-								symbol 	= getValueStockSymbolByInput("2");
-				
-								business.getDividendYield(price, symbol, true);
+	                System.out.println("Write its Price to complete the operation");
+			System.out.print("Price: ");
+
+			price 	= scPrice1.nextDouble();
+			symbol 	= getValueStockSymbolByInput("2");
+
+			business.getDividendYield(price, symbol, true);
 								
 	              break;
 	                
 	            case 3:
 	            	Scanner scPrice2 = new Scanner(System.in);
 	            	System.out.println("");
-	              System.out.println("Write its Price to complete the operation");
-								System.out.print("Price: ");
-								
-								price 	= scPrice2.nextDouble();
-								symbol 	= getValueStockSymbolByInput("3");
-				
-								business.getDividendYield(price, symbol, true);
+	                System.out.println("Write its Price to complete the operation");
+			System.out.print("Price: ");
+
+			price 	= scPrice2.nextDouble();
+			symbol 	= getValueStockSymbolByInput("3");
+
+			business.getDividendYield(price, symbol, true);
 								
 	              break;
 	                
 	            case 4:
 	            	Scanner scPrice3 = new Scanner(System.in);
 	            	System.out.println("");
-	              System.out.println("Write its Price to complete the operation");
-								System.out.print("Price: ");
-								
-								price 	= scPrice3.nextDouble();
-								symbol 	= getValueStockSymbolByInput("4");
-				
-								business.getDividendYield(price, symbol, true);
+	                System.out.println("Write its Price to complete the operation");
+			System.out.print("Price: ");
+
+			price 	= scPrice3.nextDouble();
+			symbol 	= getValueStockSymbolByInput("4");
+
+			business.getDividendYield(price, symbol, true);
 								
 	              break;
 	                
@@ -174,13 +173,13 @@ public class MainApp {
 	            case 5:
 	            	Scanner scPrice4 = new Scanner(System.in);
 	            	System.out.println("");
-	              System.out.println("Write its Price to complete the operation");
-								System.out.print("Price: ");
-								
-								price 	= scPrice4.nextDouble();
-								symbol 	= getValueStockSymbolByInput("5");
-				
-								business.getDividendYield(price, symbol, true);
+	                System.out.println("Write its Price to complete the operation");
+			System.out.print("Price: ");
+
+			price 	= scPrice4.nextDouble();
+			symbol 	= getValueStockSymbolByInput("5");
+
+			business.getDividendYield(price, symbol, true);
 								
 	              break;
 	                
@@ -190,11 +189,11 @@ public class MainApp {
 
             }
             
-            back = new Scanner(System.in);
-						System.out.print("\n\nBack to main menu? Y/N: "); 
-						String yn = back.next();
-						if(yn.equalsIgnoreCase("Y"))
-		    				this.mainMenu();
+            	back = new Scanner(System.in);
+		System.out.print("\n\nBack to main menu? Y/N: "); 
+		String yn = back.next();
+		if(yn.equalsIgnoreCase("Y"))
+		this.mainMenu();
 
         } catch (IOException ioe) {
             System.out.println("IO error trying to read your submenu input." + ioe);
@@ -207,9 +206,9 @@ public class MainApp {
     
     public void showSubMenuRatioOptions(int mainMenuChoice) throws Exception {
     	IMarketBusiness marketBusiness 	= null;
-    	Double price 										= null;
-    	StockSymbols symbol 						= null;
-    	Scanner back 										= null;
+    	Double price 			= null;
+    	StockSymbols symbol 		= null;
+    	Scanner back 			= null;
 
         switch (mainMenuChoice) {
 
@@ -240,13 +239,13 @@ public class MainApp {
 	            	marketBusiness  = new MarketBusinessImpl();
 	            	Scanner scPrice = new Scanner(System.in);
 	            	System.out.println("");
-	              System.out.println("Write its Price to complete the operation");
-								System.out.print("Price: ");
+	                System.out.println("Write its Price to complete the operation");
+			System.out.print("Price: ");
 								
-								price 	= scPrice.nextDouble();
-								symbol 	= getValueStockSymbolByInput("1");
+			price 	= scPrice.nextDouble();
+			symbol 	= getValueStockSymbolByInput("1");
 				
-								marketBusiness.getPERatio(price, symbol);
+			marketBusiness.getPERatio(price, symbol);
 								
 	              break;
 	                
@@ -254,13 +253,13 @@ public class MainApp {
 	            	marketBusiness   = new MarketBusinessImpl();
 	            	Scanner scPrice1 = new Scanner(System.in);
 	            	System.out.println("");
-	              System.out.println("Write its Price to complete the operation");
-								System.out.print("Price: ");
+	                System.out.println("Write its Price to complete the operation");
+			System.out.print("Price: ");
 								
-								price 	= scPrice1.nextDouble();
-								symbol 	= getValueStockSymbolByInput("2");
+			price 	= scPrice1.nextDouble();
+			symbol 	= getValueStockSymbolByInput("2");
 				
-								marketBusiness.getPERatio(price, symbol);
+			marketBusiness.getPERatio(price, symbol);
 								
 	              break;
 	                
@@ -268,13 +267,13 @@ public class MainApp {
 	            	marketBusiness   = new MarketBusinessImpl();
 	            	Scanner scPrice2 = new Scanner(System.in);
 	            	System.out.println("");
-	              System.out.println("Write its Price to complete the operation");
-								System.out.print("Price: ");
+	                System.out.println("Write its Price to complete the operation");
+			System.out.print("Price: ");
 								
-								price 	= scPrice2.nextDouble();
-								symbol 	= getValueStockSymbolByInput("3");
+			price 	= scPrice2.nextDouble();
+			symbol 	= getValueStockSymbolByInput("3");
 				
-								marketBusiness.getPERatio(price, symbol);
+			marketBusiness.getPERatio(price, symbol);
 								
 	              break;
 	                
@@ -282,13 +281,13 @@ public class MainApp {
 	            	marketBusiness   = new MarketBusinessImpl();
 	            	Scanner scPrice3 = new Scanner(System.in);
 	            	System.out.println("");
-	              System.out.println("Write its Price to complete the operation");
-								System.out.print("Price: ");
+	                System.out.println("Write its Price to complete the operation");
+			System.out.print("Price: ");
 								
-								price 	= scPrice3.nextDouble();
-								symbol 	= getValueStockSymbolByInput("4");
+			price 	= scPrice3.nextDouble();
+			symbol 	= getValueStockSymbolByInput("4");
 				
-								marketBusiness.getPERatio(price, symbol);
+			marketBusiness.getPERatio(price, symbol);
 								
 	              break;
 	                
@@ -297,13 +296,12 @@ public class MainApp {
 	            	marketBusiness   = new MarketBusinessImpl();
 	            	Scanner scPrice4 = new Scanner(System.in);
 	            	System.out.println("");
-	              System.out.println("Write its Price to complete the operation");
-								System.out.print("Price: ");
-								
-								price 	= scPrice4.nextDouble();
-								symbol 	= getValueStockSymbolByInput("5");
+	                System.out.println("Write its Price to complete the operation");
+			System.out.print("Price: ");
+			price 	= scPrice4.nextDouble();
+			symbol 	= getValueStockSymbolByInput("5");
 				
-								marketBusiness.getPERatio(price, symbol);
+			marketBusiness.getPERatio(price, symbol);
 								
 	              break;
 	                
@@ -313,11 +311,12 @@ public class MainApp {
 
             }
             
-            back = new Scanner(System.in);
-						System.out.print("\n\nBack to main menu? Y/N: "); 
-						String yn = back.next();
-						if(yn.equalsIgnoreCase("Y"))
-							this.mainMenu();
+            	back = new Scanner(System.in);
+		System.out.print("\n\nBack to main menu? Y/N: "); 
+		String yn = back.next();
+		
+		if(yn.equalsIgnoreCase("Y"))
+			this.mainMenu();
 
         } catch (IOException ioe) {
             System.out.println("IO error trying to read your submenu input." + ioe);
@@ -379,18 +378,18 @@ public class MainApp {
         try {
         	
         	if(tradeBusiness==null || ((TradeBusinessImpl)tradeBusiness).getAllMemoryMap().size()<1){
-	    			System.out.print("\nYou have to record trades before calculate. Please choose menu 3. \n "); 
-	    			this.mainMenu();
-	    			return;
+			System.out.print("\nYou have to record trades before calculate. Please choose menu 3. \n "); 
+			this.mainMenu();
+			return;
         	} 
 
         	tradeBusiness.getCalculationVWSPPast5Minutes();
     			
-    			back = new Scanner(System.in);
-    			System.out.print("Back to main menu? Y/N: "); 
-    			String yn = back.next();
-    			if(yn.equalsIgnoreCase("Y"))
-    				this.mainMenu();
+		back = new Scanner(System.in);
+		System.out.print("Back to main menu? Y/N: "); 
+		String yn = back.next();
+		if(yn.equalsIgnoreCase("Y"))
+			this.mainMenu();
             
 
         } catch (Exception ioe) {
