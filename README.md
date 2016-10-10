@@ -9,3 +9,5 @@ according to the requirements. Just follow what the menu says.
 
 This project also has its own unit tests, which are located at the path:
 /superSimpleStoc/src/test/java/com/jpmorgan/test/GeneralMarketTest.java
+
+This application was developed by Daniel Carrasco
